@@ -1,0 +1,16 @@
+extends: default
+ignore-from-file: .gitignore
+
+rules:
+  braces: disable
+  brackets: disable
+  colons: disable
+  commas: disable
+  comments: disable
+  document-start: disable
+  indentation: disable
+  line-length: disable
+  trailing-spaces: disable
+  new-lines: disable
+  truthy: disable
+  hyphens: disable

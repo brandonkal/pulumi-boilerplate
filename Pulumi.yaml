@@ -1,0 +1,11 @@
+name: pulumi-boilerplate
+description: Pulumi TypeScript boilerplate
+runtime:
+  name: nodejs
+  options:
+    packagemanager: pnpm
+    typescript: false
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: typescript

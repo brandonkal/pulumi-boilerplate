@@ -1,0 +1,12 @@
+# Ignore Package Manager files
+package.json
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+# Ignore files supported by Biome formatter
+*.js
+*.json
+*.ts
+*.tsx
+*.jsx
+*.jsonc

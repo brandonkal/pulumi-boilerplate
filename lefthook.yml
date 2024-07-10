@@ -1,0 +1,25 @@
+rc: ~/.lefthookrc
+
+pre-commit:
+  parallel: true
+  commands:
+    types:
+      glob: "*.ts"
+      run: pnpm exec tsc --incremental --noEmit
+    lint-globals:
+      glob: "*.ts"
+      run: pnpm --silent lint:globals
+    yaml:
+      glob: "*.{yml,yaml}"
+      run: yamllint {staged_files}
+    prettier:
+      run: pnpm exec prettier . --write
+      stage_fixed: true
+    lint:
+      glob: "*.{js,jsx,ts,tsx,json,jsonc}"
+      run: pnpm exec biome check {staged_files} --write
+      stage_fixed: true
+    spelling:
+      run: typos {staged_files}
+    gitleaks:
+      run: gitleaks protect --verbose --redact --staged

@@ -1,0 +1,26 @@
+{
+	"name": "kite-infra",
+	"type": "module",
+	"main": "dist/index.js",
+	"devDependencies": {
+		"@biomejs/biome": "1.8.3",
+		"@evilmartians/lefthook": "^1.7.1",
+		"@swc/cli": "^0.4.0",
+		"@swc/core": "^1.6.13",
+		"@types/node": "^20.14.10",
+		"prettier": "3.3.2",
+		"typescript": "^5.5.3"
+	},
+	"dependencies": {
+		"@pulumi/pulumi": "^3.122.0",
+		"@pulumi/random": "^4.16.3"
+	},
+	"packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a",
+	"scripts": {
+		"build": "swc src -d dist --strip-leading-paths",
+		"typecheck": "tsc --incremental --noEmit && pnpm --silent lint:globals",
+		"lint:globals": "grep -r -n --include='*.ts' -E '__dirname|__filename' ./src && echo 'Error: __dirname or __filename found in TypeScript source files.' && exit 1 || exit 0",
+		"dangerousReset": "pulumi state delete --target-dependents",
+		"start": "pnpm build && node ./dist/index.js"
+	}
+}
